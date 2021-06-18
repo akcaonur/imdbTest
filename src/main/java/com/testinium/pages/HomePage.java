@@ -5,18 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage{
-    public WebElement getAnaMenu() {
-        return anaMenu;
-    }
+    @FindBy(xpath = "//a[@href='/title/tt0018773?ref_=nv_sr_srsg_2']")
+    private WebElement searchResult;
 
     @FindBy(xpath = "//*[@id=\"home_img_holder\"]")
     private WebElement anaMenu;
-
+    @FindBy(id = "imdbHeader-navDrawerOpen--desktop")
+    private WebElement menu;
     //*[@id='home_img_holder']
 
 
-    @FindBy(id = "imdbHeader-navDrawerOpen--desktop")
-    private WebElement menu;
+    public WebElement getAnaMenu() {
+        return anaMenu;
+    }
 
     public WebElement getSeachBar() {
         return seachBar;
@@ -26,8 +27,7 @@ public class HomePage extends BasePage{
         return searchResult;
     }
 
-    @FindBy(xpath = "//a[@href='/title/tt0018773?ref_=nv_sr_srsg_2']")
-    private WebElement searchResult;
+
 
     @FindBy(xpath = "//input[@placeholder='Search IMDb']")
     private WebElement seachBar;

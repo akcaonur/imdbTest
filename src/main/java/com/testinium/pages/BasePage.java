@@ -5,11 +5,9 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -25,10 +23,11 @@ public class BasePage {
 
 
     public void check(String direktor,String writer,String stars){
-
+        wait(1);
         Assert.assertEquals("Charles Chaplin",direktor);
         Assert.assertEquals("Charles Chaplin",writer);
         Assert.assertEquals("Charles Chaplin",stars);
+        wait(1);
     }
 
     public BasePage(WebDriver driver) {
@@ -53,17 +52,25 @@ public class BasePage {
     }
 
     public void checkPhoto(ArrayList<WebElement> urunListesi){
+        wait(1);
         for(int i=0; i<urunListesi.size();i++){
             String urunResmi=urunListesi.get(i).getAttribute("src");
             Assert.assertTrue(urunResmi.contains("https://m.media-amazon.com/images/"));
         }
     }
-    public void bekle(int seconds) {
+    public void wait(int seconds) {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void click(WebElement webElement){
+        wait(1);
+        webElement.click();
+        waitForPageLoad();
     }
 
 }

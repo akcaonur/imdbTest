@@ -36,6 +36,15 @@ public class TheJazzSinger extends BasePage{
     @FindBy(xpath ="//a [@href='/name/nm0427231/?ref_=tt_ov_st_sm']" )
     private WebElement starsjazz;
 
+    public WebElement getAllPhoto() {
+        return allPhoto;
+    }
+
+    @FindBy(xpath ="//*[@id=\"titleImageStrip\"]/div[2]/a[2]" )
+    private WebElement allPhoto;
+
+
+
     public WebElement getPhotoCheck() {
         return photoCheck;
     }
@@ -44,9 +53,11 @@ public class TheJazzSinger extends BasePage{
     private WebElement photoCheck;
 
     public void check(String direktor,String writer,String stars){
+        wait(1);
         Assert.assertEquals("Alan Crosland",direktor);
         Assert.assertEquals("Samson Raphaelson",writer);
-        Assert.assertEquals("Al Jolson, May McAvoy",stars);
+        Assert.assertEquals("Al Jolson",stars);
+        wait(1);
 
     }
 
